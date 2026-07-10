@@ -11,7 +11,7 @@ from fastapi.responses import JSONResponse
 
 from app.database import init_db
 from app.errors import ToyWakeError, toywake_error_handler
-from app.routers import health, scan, toys
+from app.routers import health, memories, play, scan, toys
 
 
 @asynccontextmanager
@@ -46,6 +46,8 @@ API_PREFIX = "/api/v1"
 app.include_router(health.router, prefix=API_PREFIX)
 app.include_router(scan.router, prefix=API_PREFIX)
 app.include_router(toys.router, prefix=API_PREFIX)
+app.include_router(play.router, prefix=API_PREFIX)
+app.include_router(memories.router, prefix=API_PREFIX)
 
 
 @app.get("/")

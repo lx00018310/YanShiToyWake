@@ -81,3 +81,40 @@ class MemoryOut(BaseModel):
 class MemoryCreateResponse(BaseModel):
     status: str = "ok"
     memory_id: int
+
+
+# ---------- Play ----------
+class SparkOut(BaseModel):
+    child_speech: str
+    parent_hint: str
+    source: str  # ai | fixed | mock
+    memory_used: Optional[str] = None
+
+
+class PlayStartRequest(BaseModel):
+    toy_id: int
+
+
+class PlayStartResponse(BaseModel):
+    session_id: str
+    wake_phrase: str
+    spark: SparkOut
+
+
+class PlayNextRequest(BaseModel):
+    session_id: str
+    parent_context: Optional[str] = Field(default=None, max_length=100)
+
+
+class PlayNextResponse(BaseModel):
+    spark: SparkOut
+
+
+class PlayEndRequest(BaseModel):
+    session_id: str
+    parent_context: Optional[str] = Field(default=None, max_length=100)
+
+
+class PlayEndResponse(BaseModel):
+    ending_speech: str
+    memory_candidate: Optional[str] = None

@@ -41,6 +41,10 @@ def spark_limit_exceeded() -> ToyWakeError:
     )
 
 
+def memory_not_found() -> ToyWakeError:
+    return ToyWakeError("MEMORY_NOT_FOUND", "未找到这条记忆。", 404)
+
+
 async def toywake_error_handler(request: Request, exc: ToyWakeError) -> JSONResponse:
     return JSONResponse(
         status_code=exc.status_code,

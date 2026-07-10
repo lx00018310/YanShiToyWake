@@ -75,7 +75,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 - [x] 阶段 0：仓库与规范初始化
 - [x] 阶段 1：后端骨架与数据库
-- [ ] 阶段 2：Mock 游戏火花闭环
+- [x] 阶段 2：Mock 游戏火花闭环
 - [ ] 阶段 3：真实 AI Provider
 - [ ] 阶段 4：Android 基础与后端连接
 - [ ] 阶段 5：Android NFC 闭环
