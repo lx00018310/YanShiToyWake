@@ -42,16 +42,23 @@ APK 产物：`app/build/outputs/apk/debug/app-debug.apk`
 ```
 app/src/main/java/com/toywake/
 ├─ MainActivity.kt              # 单 Activity
-├─ navigation/AppNavHost.kt     # 导航
+├─ navigation/AppNavHost.kt     # 导航（scan 起点 -> bind/play/settings）
+├─ nfc/                         # NfcReaderManager + TagUidFormatter + TagDedup + NfcState
 ├─ data/remote/                 # Retrofit API + DTO + ApiClient
 ├─ data/preferences/            # DataStore + UrlUtil
 ├─ data/repository/             # ToyWakeRepository
 └─ ui/
    ├─ theme/                    # Compose 主题
-   └─ settings/                 # 设置页 + ViewModel（连接测试）
+   ├─ scan/                     # 扫描页 + ViewModel（NFC 状态机 + scan API）
+   ├─ settings/                 # 设置页 + ViewModel（连接测试）
+   ├─ bind/                     # 绑定页（阶段 6 完整实现）
+   └─ play/                     # 共玩页（阶段 6 完整实现）
 ```
 
 ## 测试
 
 - `UrlUtilTest`：Base URL 校验与规整（8 项）
-- 后续阶段补充 Tag UID 格式化、NFC 去重、ViewModel 状态流转等纯逻辑测试。
+- `TagUidFormatterTest`：NFC UID 标准化（5 项）
+- `TagDedupTest`：重复读取去重（5 项）
+- 合计 18 项单元测试，0 失败。
+- NFC 硬件本身须在真实 Android 设备上手测（至少 3 张 NFC 贴纸）。

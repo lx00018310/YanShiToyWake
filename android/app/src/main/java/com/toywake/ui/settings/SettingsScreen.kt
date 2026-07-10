@@ -9,8 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -30,7 +34,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(vm: SettingsViewModel = viewModel()) {
+fun SettingsScreen(
+    onBack: () -> Unit = {},
+    vm: SettingsViewModel = viewModel(),
+) {
     val baseUrl by vm.baseUrl.collectAsState()
     val connection by vm.connection.collectAsState()
     var urlInput by remember { mutableStateOf(baseUrl) }
@@ -39,7 +46,16 @@ fun SettingsScreen(vm: SettingsViewModel = viewModel()) {
     LaunchedEffect(baseUrl) { urlInput = baseUrl }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("设置") }) },
+        topBar = {
+            TopAppBar(
+                title = { Text("设置") },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回")
+                    }
+                },
+            )
+        },
     ) { padding ->
         Column(
             modifier = Modifier
