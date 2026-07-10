@@ -13,6 +13,7 @@ from sqlmodel import Session, select
 
 from app.ai.base import AiProvider, PlaySparkRequest, PlaySparkResult
 from app.ai.mock_provider import MockAiProvider
+from app.ai.openai_compatible_provider import OpenAICompatibleProvider
 from app.config import settings
 from app.errors import (
     session_ended,
@@ -24,7 +25,9 @@ from app.models import Memory, PlaySession, PlayTurn, Toy, utcnow
 
 
 def _get_provider() -> AiProvider:
-    """阶段 3 将在此根据 settings.ai_mode 返回真实 Provider。"""
+    """根据 settings.ai_mode 选择 Provider。ai 模式失败自动降级固定内容。"""
+    if settings.ai_mode == "ai":
+        return OpenAICompatibleProvider()
     return MockAiProvider()
 
 
