@@ -41,6 +41,14 @@
 - **理由**：保证离线开发与 CI 可测试性。
 - **日期**：阶段 3
 
+## D-007 Android 版本栈选择（AGP 8.13.2 + 2024 AndroidX）
+
+- **决策**：Android 采用 AGP 8.13.2 + Gradle 9.0.0 + Kotlin 2.1.20 + Compose BOM 2024.12.01 + compileSdk 35，而非 2026 年中最新版。
+- **背景**：最新 AndroidX（core-ktx 1.19.0、lifecycle 2.11.0 等）要求 AGP 9.1.0+；AGP 9.0 移除 `org.jetbrains.kotlin.android` 插件改为内置 Kotlin，Compose compiler / serialization 插件配置方式变更，迁移成本高。
+- **理由**：AGP 8.x + 显式 Kotlin 插件栈成熟稳定、写法确定；2024 年底 AndroidX 稳定版完全满足 Demo 需求；Gradle 9.0.0 已缓存免下载。
+- **验证**：`./gradlew :app:assembleDebug :app:testDebugUnitTest` 构建成功，8 项单元测试通过。
+- **日期**：阶段 4
+
 ---
 
 ## 明确不做（依据计划书 §3.2、§16.2）
