@@ -1,0 +1,7 @@
+# ToyWake 后端依赖（锁定稳定版本，无 alpha/beta/preview）
+fastapi==0.139.0
+uvicorn[standard]==0.51.0
+sqlmodel==0.0.39
+pydantic-settings==2.14.2
+httpx==0.28.1
+pytest==9.1.1

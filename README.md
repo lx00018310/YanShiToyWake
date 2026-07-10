@@ -74,7 +74,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 依据《ToyWake 亲子共玩 Demo 实施计划书》分 8 个阶段推进：
 
 - [x] 阶段 0：仓库与规范初始化
-- [ ] 阶段 1：后端骨架与数据库
+- [x] 阶段 1：后端骨架与数据库
 - [ ] 阶段 2：Mock 游戏火花闭环
 - [ ] 阶段 3：真实 AI Provider
 - [ ] 阶段 4：Android 基础与后端连接

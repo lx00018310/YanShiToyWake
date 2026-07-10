@@ -1,0 +1,12 @@
+# 统一换行符为 LF，跨平台一致（Windows 上 Android Studio / Git Bash 均兼容）
+* text=auto eol=lf
+
+# 二进制文件不做换行转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.db binary
+*.sqlite binary
+*.keystore binary
+*.jks binary
