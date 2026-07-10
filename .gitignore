@@ -1,0 +1,63 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# ===== 后端运行产物 =====
+backend/.env
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ===== Android / Gradle =====
+android/.gradle/
+android/build/
+android/app/build/
+android/captures/
+android/local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+*.keystore
+!debug.keystore
+android/app/release/
+
+# ===== Android Studio / IntelliJ =====
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ===== ZCode / 编辑器 =====
+.zcode/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 日志 =====
+*.log
+logs/
