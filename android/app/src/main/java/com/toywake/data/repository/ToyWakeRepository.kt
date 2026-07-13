@@ -1,6 +1,7 @@
 package com.toywake.data.repository
 
 import com.toywake.data.remote.ApiClient
+import com.toywake.data.remote.MemoryCreateRequest
 import com.toywake.data.remote.PlayEndRequest
 import com.toywake.data.remote.PlayNextRequest
 import com.toywake.data.remote.PlayStartRequest
@@ -37,6 +38,9 @@ class ToyWakeRepository(private val api: ToyWakeApi) {
 
     suspend fun playEnd(sessionId: String, parentContext: String? = null) =
         api.playEnd(PlayEndRequest(session_id = sessionId, parent_context = parentContext))
+
+    suspend fun createMemory(toyId: Int, content: String, memoryType: String = "event") =
+        api.createMemory(MemoryCreateRequest(toy_id = toyId, content = content, memory_type = memoryType))
 }
 
 object ToyWakeClient {

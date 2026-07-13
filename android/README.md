@@ -44,6 +44,7 @@ app/src/main/java/com/toywake/
 ├─ MainActivity.kt              # 单 Activity
 ├─ navigation/AppNavHost.kt     # 导航（scan 起点 -> bind/play/settings）
 ├─ nfc/                         # NfcReaderManager + TagUidFormatter + TagDedup + NfcState
+├─ tts/                         # ToyWakeTtsManager（系统 TTS 封装，顺序播放）
 ├─ data/remote/                 # Retrofit API + DTO + ApiClient
 ├─ data/preferences/            # DataStore + UrlUtil
 ├─ data/repository/             # ToyWakeRepository
@@ -51,8 +52,8 @@ app/src/main/java/com/toywake/
    ├─ theme/                    # Compose 主题
    ├─ scan/                     # 扫描页 + ViewModel（NFC 状态机 + scan API）
    ├─ settings/                 # 设置页 + ViewModel（连接测试）
-   ├─ bind/                     # 绑定页（阶段 6 完整实现）
-   └─ play/                     # 共玩页（阶段 6 完整实现）
+   ├─ bind/                     # 绑定表单 + ViewModel（校验 + 保存并叫醒）
+   └─ play/                     # 共玩页 + ViewModel（start/next/end + TTS + 记忆确认）
 ```
 
 ## 测试

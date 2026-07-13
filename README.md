@@ -79,7 +79,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 - [x] 阶段 3：真实 AI Provider
 - [x] 阶段 4：Android 基础与后端连接
 - [x] 阶段 5：Android NFC 闭环
-- [ ] 阶段 6：绑定、TTS 与共玩页面
+- [x] 阶段 6：绑定、TTS 与共玩页面
 - [ ] 阶段 7：异常处理与离线降级
 
 ## 核心文档

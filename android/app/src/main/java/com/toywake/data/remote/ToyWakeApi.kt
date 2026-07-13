@@ -22,4 +22,7 @@ interface ToyWakeApi {
 
     @POST("api/v1/play/end")
     suspend fun playEnd(@Body req: PlayEndRequest): PlayEndResponseDto
+
+    @POST("api/v1/memories")
+    suspend fun createMemory(@Body req: MemoryCreateRequest): MemoryCreateResponseDto
 }

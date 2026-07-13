@@ -32,19 +32,23 @@ fun AppNavHost() {
         composable(
             route = "${Routes.BIND}/{tagUid}",
             arguments = listOf(navArgument("tagUid") { type = NavType.StringType }),
-        ) { entry ->
+        ) {
             BindScreen(
-                tagUid = entry.arguments?.getString("tagUid") ?: "",
                 onBack = { navController.popBackStack() },
+                onBound = { toyId ->
+                    navController.navigate("${Routes.PLAY}/$toyId") {
+                        popUpTo(Routes.SCAN)
+                    }
+                },
             )
         }
         composable(
             route = "${Routes.PLAY}/{toyId}",
             arguments = listOf(navArgument("toyId") { type = NavType.IntType }),
-        ) { entry ->
+        ) {
             PlayScreen(
-                toyId = entry.arguments?.getInt("toyId") ?: 0,
                 onBack = { navController.popBackStack() },
+                onNavigateScan = { navController.popBackStack(Routes.SCAN, inclusive = false) },
             )
         }
         composable(Routes.SETTINGS) {

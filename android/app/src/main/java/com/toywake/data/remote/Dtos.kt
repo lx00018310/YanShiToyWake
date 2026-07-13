@@ -86,3 +86,16 @@ data class PlayEndResponseDto(
     val ending_speech: String,
     val memory_candidate: String? = null,
 )
+
+@Serializable
+data class MemoryCreateRequest(
+    val toy_id: Int,
+    val content: String,
+    val memory_type: String = "event",
+)
+
+@Serializable
+data class MemoryCreateResponseDto(
+    val status: String,
+    val memory_id: Int,
+)
