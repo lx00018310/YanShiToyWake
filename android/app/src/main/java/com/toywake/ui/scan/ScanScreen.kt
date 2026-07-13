@@ -32,7 +32,7 @@ import com.toywake.nfc.NfcState
 @Composable
 fun ScanScreen(
     onNavigateBind: (String) -> Unit,
-    onNavigatePlay: (Int) -> Unit,
+    onNavigatePlay: (Int, String, String) -> Unit,
     onNavigateSettings: () -> Unit,
     vm: ScanViewModel = viewModel(),
 ) {
@@ -61,9 +61,9 @@ fun ScanScreen(
                 onNavigateBind(o.tagUid)
             }
             is ScanOutcome.Known -> {
-                val toyId = o.toy.id
+                val toy = o.toy
                 vm.clearOutcome()
-                onNavigatePlay(toyId)
+                onNavigatePlay(toy.id, toy.name, toy.toy_type)
             }
             null -> Unit
         }

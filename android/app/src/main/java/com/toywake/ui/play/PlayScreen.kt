@@ -50,8 +50,12 @@ fun PlayScreen(
     val tts = remember { ToyWakeTtsManager(context) }
 
     val uiState by vm.uiState.collectAsState()
-    val error by vm.error.collectAsState()
+    val notice by vm.notice.collectAsState()
     val finished by vm.finished.collectAsState()
+    var ttsError by remember { mutableStateOf(false) }
+
+    // TTS 初始化失败时提示家长（不崩溃）
+    tts.onError = { ttsError = true }
 
     var pendingAction by remember { mutableStateOf<ContextAction?>(null) }
     var contextInput by remember { mutableStateOf("") }
@@ -131,8 +135,20 @@ fun PlayScreen(
                     color = MaterialTheme.colorScheme.error,
                 )
             }
-            error?.let {
-                Text("提示：$it", color = MaterialTheme.colorScheme.error)
+            if (ttsError) {
+                Text(
+                    "语音初始化失败，请检查系统语音引擎。",
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+            notice?.let { msg ->
+                Card(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        msg,
+                        modifier = Modifier.padding(12.dp),
+                        color = MaterialTheme.colorScheme.tertiary,
+                    )
+                }
             }
         }
     }

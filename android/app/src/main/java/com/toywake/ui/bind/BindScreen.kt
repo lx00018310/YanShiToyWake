@@ -37,7 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun BindScreen(
     onBack: () -> Unit,
-    onBound: (Int) -> Unit,
+    onBound: (Int, String, String) -> Unit,
     vm: BindViewModel = viewModel(),
 ) {
     val name by vm.name.collectAsState()
@@ -49,9 +49,9 @@ fun BindScreen(
     val canSubmit by vm.canSubmit.collectAsState()
     val boundToyId by vm.boundToyId.collectAsState()
 
-    // 绑定成功 -> 开始游戏
+    // 绑定成功 -> 开始游戏（带上名字与类型，供离线降级使用）
     LaunchedEffect(boundToyId) {
-        boundToyId?.let { onBound(it) }
+        boundToyId?.let { onBound(it, name.trim(), toyType) }
     }
 
     var typeExpanded by remember { mutableStateOf(false) }

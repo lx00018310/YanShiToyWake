@@ -46,6 +46,7 @@ app/src/main/java/com/toywake/
 ├─ nfc/                         # NfcReaderManager + TagUidFormatter + TagDedup + NfcState
 ├─ tts/                         # ToyWakeTtsManager（系统 TTS 封装，顺序播放）
 ├─ data/remote/                 # Retrofit API + DTO + ApiClient
+├─ data/local/                  # FixedContentStore（离线降级固定内容库，镜像后端 §14）
 ├─ data/preferences/            # DataStore + UrlUtil
 ├─ data/repository/             # ToyWakeRepository
 └─ ui/
@@ -61,5 +62,7 @@ app/src/main/java/com/toywake/
 - `UrlUtilTest`：Base URL 校验与规整（8 项）
 - `TagUidFormatterTest`：NFC UID 标准化（5 项）
 - `TagDedupTest`：重复读取去重（5 项）
-- 合计 18 项单元测试，0 失败。
+- `FixedContentStoreTest`：离线固定内容库（5 项）
+- 合计 23 项单元测试，0 失败。
+- 后端不可达时自动切换本地固定模式（§16.1），不中断、不崩溃。
 - NFC 硬件本身须在真实 Android 设备上手测（至少 3 张 NFC 贴纸）。
